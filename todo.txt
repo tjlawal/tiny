@@ -1,3 +1,2 @@
 - Automate testing the parser.
 - Automate testing the lexer.
-- Fix bug with the emitter that puts the code after the main program

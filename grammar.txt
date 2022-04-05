@@ -1,0 +1,25 @@
+This file contains the specification for the formal language grammar for Tiny BASIC.
+Some background about the notation used:
+- {} means zero or more
+- [] means zero or one
+- + means one or more of whatever is to the left
+- () is for grouping
+- | is a logical or
+- keywords and operators are quoted strings of text
+
+
+program ::= {statement}
+
+statement ::= "PRINT" (expression | string) nl
+	| "IF" comparision "THEN" nl {statement} "ENDIF" nl
+	| "WHILE" comparision "REPEAT" nl {statement} "ENDWHILE" nl
+	| "LABEL" identifier nl
+	| "GOTO" identifier nl
+	| "LET" identifier "=" expression nl
+	| "INPUT" identifier nl
+primary ::= number | identifier
+unary ::= ["+" | "-"] primary
+term ::= unary {("/" | "*") unary}
+expression ::= term {("-" | "+") term}
+comparison ::= expression (("==" | "!=" | ">" | ">=" | "<" | "<=") expression)+
+nl ::= '\n'+

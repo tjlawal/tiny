@@ -1,0 +1,4 @@
+PRINT "Hello, world!"
+LABEL loop
+PRINT "Hello, world!"
+GOTO loop

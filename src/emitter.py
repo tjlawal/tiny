@@ -6,6 +6,7 @@ class Emitter:
     self.code = ""
 
 # add a fragment of C code
+
   def emit(self, code):
     self.code += code
 
@@ -16,10 +17,11 @@ class Emitter:
 
 # to add a line of C code to the top of the C code file, this includes
 #  headers, main and variable declaration
+
   def header_line(self, code):
     self.header += code + '\n'
 
-# save file 
+# save file
   def write_file(self):
     with open(self.full_path, 'w') as output_file:
       output_file.write(self.header + self.code)

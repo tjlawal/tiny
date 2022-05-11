@@ -78,7 +78,8 @@ class Parser:
 
       if self.check_token(TokenType.STRING):
         # A simple string
-        self.emitter.emit_line("printf(\"" + self.current_token.text + "\\n\");")
+        self.emitter.emit_line("printf(\"" + self.current_token.text +
+                               "\\n\");")
         self.next_token()
       else:
         # Expects an expression and print the result as a float
@@ -170,7 +171,8 @@ class Parser:
         self.emitter.header_line("float " + self.current_token.text + ";")
 
       # emit scanf but also validate the input. if invalid, set the variable to 0 and clear the input
-      self.emitter.emit_line("if(0 == scanf(\"%" + "f\", &" + self.current_token.text + ")) {")
+      self.emitter.emit_line("if(0 == scanf(\"%" + "f\", &" +
+                             self.current_token.text + ")) {")
       self.emitter.emit_line(self.current_token.text + " = 0;")
       self.emitter.emit("scanf(\"%")
       self.emitter.emit_line("*s\");")
@@ -249,7 +251,8 @@ class Parser:
     self.term()
 
     # can have 0 or mare +/- and expressions.
-    while self.check_token(TokenType.PLUS) or self.check_token(TokenType.MINUS):
+    while self.check_token(TokenType.PLUS) or self.check_token(
+        TokenType.MINUS):
       self.emitter.emit(self.current_token.text)
       self.next_token()
       self.term()
@@ -266,7 +269,7 @@ class Parser:
       self.next_token()
       self.expression()
     # else:
-      # self.abort("Expected comparison operator at: " + self.current_token.text)
+    # self.abort("Expected comparison operator at: " + self.current_token.text)
 
     # can have 0 or more comparison operator
     while self.is_comparison_operator():

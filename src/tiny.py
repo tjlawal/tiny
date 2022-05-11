@@ -3,8 +3,6 @@ from emitter import *
 from parser import *
 import sys
 
-# TODO(tijani): format source code useing YAPF tool
-
 def main():
   print("Tiny Basic to C Compiler")
 
